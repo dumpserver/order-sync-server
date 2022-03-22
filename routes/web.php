@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OrderController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,7 +17,13 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Home', [
+    return Inertia::render('OrderTestPage', [
         'title' => 'Home Page.'
     ]);
 });
+
+Route::get('/order/create', [OrderController::class, 'index']);
+Route::post('/order/create', [OrderController::class, 'setOrder']);
+
+// Route::resource('order', OrderController::class);
+
